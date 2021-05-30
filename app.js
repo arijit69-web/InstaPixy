@@ -49,9 +49,7 @@ mongoose
   .then(() => {
 
 
-    if (process.env.NODE_ENV == "production") {
-      app.use(express.static('/public'));
-    }
+   
     
     app.listen(PORT, () => {
       console.log(chalk.cyan("Database Connected"));
