@@ -35,7 +35,7 @@ else{
 })
 // app.use('/playground',validatorRoutes)//Should be remove
 
-const PORT = 80 || process.env.PORT;
+const PORT =  process.env.PORT || 80;
 mongoose
   .connect(
     "mongodb+srv://arijit:Arijit@2000@cluster0.vbdmt.mongodb.net/details?retryWrites=true&w=majority",
