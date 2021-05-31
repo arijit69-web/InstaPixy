@@ -12,6 +12,9 @@ exports.dashboardGetController = async (req, res, next) => {
             user: req.user._id
         })
 
+        if (!profile) {
+        return res.redirect('/dashboard/create-profile')
+    }
         if (profile) {
             return res.render('/explorer', {
                 title: 'InstaPixy - Home',
@@ -178,8 +181,17 @@ exports.editProfilePostController = async (req, res, next) => {
     }
 }
 exports.bookmarksGetController = async (req, res, next) => {
-    try {
+    try { 
         let profile = await Profile.findOne({
+            user: req.user._id
+        })
+        
+        if (!profile) {
+        return res.redirect('/dashboard/create-profile')
+    }
+
+
+         profile = await Profile.findOne({
                 user: req.user._id
             })
             .populate({

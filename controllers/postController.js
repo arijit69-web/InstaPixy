@@ -6,7 +6,11 @@ const errorFormatter = require("../utils/validationErrorFormatter");
 const Post = require("../models/Post");
 const Profile=require("../models/Profile");
 const { request } = require("express");
-exports.createPostGetController = (req, res, next) => {
+exports.createPostGetController = async(req, res, next) => {
+  let profile = await Profile.findOne({ user: req.user._id })
+  if (!profile) {
+      return res.redirect('/dashboard/create-profile')
+  }
   res.render("pages/dashboard/post/createPost", {
     title: "Create a New Post",
     error: {},
