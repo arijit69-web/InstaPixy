@@ -3,7 +3,7 @@
     <div class="container my-5">
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <div class="card card-body">
+                <div class="card card-body" style="border: 1px solid black;;">
                     <div>
                         <img src="<%= author.profilePics %>" alt="Profile Pic" class="img-thumbnail img-fluid"
                             id="profilePics" width="220" height="320" style="border:1px solid black">
@@ -66,7 +66,7 @@
                                                             </div>
                                                             <% } else { %>
                                                                 <% for (let post of author.profile.posts.reverse()) { %>
-                                                                    <div class="card col-sm-5 m-2">
+                                                                    <div class="card col-sm-5 m-2" style="border: 1px solid black;">
                                                                         <% if (post.thumbnail) { %>
                                                                             <img src="<%= post.thumbnail %>"
                                                                                 alt="<%= post.title %>"
