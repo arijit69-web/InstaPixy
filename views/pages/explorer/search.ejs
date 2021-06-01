@@ -10,7 +10,7 @@
                 <p class="text-center text-muted my-5">Nothing Found</p>
             <% } else { %>
                 <% for (let post of posts) { %>
-                    <div class="card card-body">
+                    <div class="card card-body" style="border: 1px solid black;">
                         <a href="/explorer/<%= post._id %>" style=" text-decoration:none;color: #222222;">
                             <h5> <%= post.title %> </h5>
                             <p> <%= truncate(post.body) %> </p>

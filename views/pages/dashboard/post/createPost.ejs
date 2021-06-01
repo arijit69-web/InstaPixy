@@ -11,52 +11,57 @@
             </div>
 
             <div class="col-md-10 my-5">
-                <div class="card card-body mx-5 py-5" style="border:1px solid black">
-                    <h5 class="my-3">Create a New Post</h5>
-                    <form action="/posts/create" method="POST" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label for="name">Title</label>
-                            <input type="text" class="form-control <%= error.title ? 'is-invalid':''%>" name="title"
-                                id="title" placeholder="Enter Your Post Title" id="name">
-                            <div class="invalid-feedback">
-                                <%= error.title %>
-                            </div>
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <div class="card card-body mx-5" style="border:1px solid black">
+                            <h5 class="my-3">Create a New Post</h5>
+                            <form action="/posts/create" method="POST" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="name">Title</label>
+                                    <input type="text" class="form-control <%= error.title ? 'is-invalid':''%>"
+                                        name="title" id="title" placeholder="Enter Your Post Title" id="name">
+                                    <div class="invalid-feedback">
+                                        <%= error.title %>
+                                    </div>
 
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="tiny-mce-post-body">Body</label>
+
+                                    <textarea name="body" placeholder="Enter Your Post Body" id="tiny-mce-post-body"
+                                        class="form-control <%= error.body ? 'is-invalid':''%>"></textarea>
+
+                                    <div class="invalid-feedback">
+                                        <%= error.body %>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="tags">Tags</label>
+                                    <input type="text" class="form-control <%= error.tags ? 'is-invalid':''%>"
+                                        name="tags" id="tags" placeholder="tag1, tag2, tag3,.....">
+
+                                    <div class="invalid-feedback">
+                                        <%= error.tags %>
+                                    </div>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Upload</span>
+                                    </div>
+                                    <div class="custom-file">
+                                        <input type="file" name="post-thumbnail" class="custom-file-input"
+                                            id="inputGroupFile" accept="image/*">
+                                        <label for="inputGroupFile" class="custom-file-label">Upload a Photo</label>
+                                    </div>
+                                </div>
+                                <input type="submit" class="btn btn-primary" value="Create Post">
+                            </form>
 
                         </div>
-                        <div class="form-group">
-                            <label for="tiny-mce-post-body">Body</label>
-
-                            <textarea name="body" placeholder="Enter Your Post Body" id="tiny-mce-post-body"
-                                class="form-control <%= error.body ? 'is-invalid':''%>"></textarea>
-
-                            <div class="invalid-feedback" >
-                                <%= error.body %>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="tags">Enter Some Tags</label>
-                            <input type="text" class="form-control <%= error.tags ? 'is-invalid':''%>" name="tags" id="tags"
-                                placeholder="tag1, tag2, tag3,....." >
-
-                            <div class="invalid-feedback" >
-                                <%= error.tags %>
-                            </div>
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Upload</span>
-                            </div>
-                            <div class="custom-file">
-                                <input type="file" name="post-thumbnail" class="custom-file-input" id="inputGroupFile" accept="image/*">
-                                <label for="inputGroupFile" class="custom-file-label">Upload a Photo</label>
-                            </div>
-                        </div>
-                        <input type="submit" class="btn btn-primary" value="Create Post">
-                    </form>
-
+                    </div>
                 </div>
             </div>
         </div>

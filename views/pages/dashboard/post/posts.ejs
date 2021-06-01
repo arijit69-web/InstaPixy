@@ -11,30 +11,40 @@
             </div>
 
             <div class="col-md-10 my-5">
-                <div class="card card-body"  style="border:1px solid black">
-                    <h5>My Posts</h5>
-                    <div class="row">
-                        <%if(posts.length===0){ %>
-                            <div class="text-center text-muted">
-                                <p>There is no Posts Available Right Now</p>
-                                <a href ="/posts/create" class="btn btn-primary btn-sm">Create a New Post</a>
-                            </div>
-                        <% }else{%>
-                            <% for(let post of posts.reverse()) {%>
-                                <div class="card col-sm-3 m-3">
-                                <%if(post.thumbnail){ %>
-                                  <img src="<%= post.thumbnail %>" alt="<%= post.title %>" class="card-img-top mt-3">  
-                                    <% }%>
-                                    <div class="card-body">
-                                        <a style="text-decoration: none; color: #222;" href="/posts/edit/<%= post._id %>" style='color: #222;'> 
-                                        <h5> <%= post.title %></h5>
-                                        </a>
+
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <div class="card card-body" style="border:1px solid black;">
+                            <h5>My Posts</h5>
+                            <div class="row">
+                                <%if(posts.length===0){ %>
+                                    <div class="text-center text-muted">
+                                        <p>There is no Posts Available Right Now</p>
+                                        <a href="/posts/create" class="btn btn-primary btn-sm">Create a New Post</a>
                                     </div>
-                                </div>
-                                <% }%>
-                            <% }%>
+                                    <% }else{%>
+                                        <% for(let post of posts.reverse()) {%>
+                                            <div class="card col-sm-3 m-3" style="border:0.5px solid black;">
+                                                <%if(post.thumbnail){ %>
+                                                    <img src="<%= post.thumbnail %>" alt="<%= post.title %>"
+                                                        class="card-img-top mt-3">
+                                                    <% }%>
+                                                        <div class="card-body">
+                                                            <a style="text-decoration: none; color: #222;"
+                                                                href="/posts/edit/<%= post._id %>" style='color: #222;'>
+                                                                <h5>
+                                                                    <%= post.title %>
+                                                                </h5>
+                                                            </a>
+                                                        </div>
+                                            </div>
+                                            <% }%>
+                                                <% }%>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
