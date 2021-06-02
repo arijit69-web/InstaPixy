@@ -12,7 +12,9 @@ const {
     loginPostController,
     logoutController,
     changePasswordGetController,
-    changePasswordPostController
+    changePasswordPostController,
+    forgetPasswordGetController,
+    forgetPasswordPostController
 
 } = require('../controllers/authController')
 
@@ -24,7 +26,11 @@ router.get('/signup', isUnAuthenticated, signupGetController)
 router.post('/signup', isUnAuthenticated, signupValidator, signupPostController)
 
 router.get('/login', isUnAuthenticated, loginGetController)
+
 router.post('/login', isUnAuthenticated, loginValidator, loginPostController)
+router.get('/forgotpassword', isUnAuthenticated, forgetPasswordGetController)
+router.post('/forgotpassword', isUnAuthenticated, forgetPasswordPostController)
+
 router.get('/change-password', isAuthenticated, changePasswordGetController)
 router.post('/change-password', isAuthenticated, changePasswordPostController)
 

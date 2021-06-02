@@ -1,4 +1,6 @@
 const bcrypt = require('bcrypt')
+var nodemailer = require('nodemailer');
+
 const {
     validationResult
 } = require('express-validator')
@@ -65,6 +67,7 @@ exports.loginGetController = (req, res, next) => {
         flashMessage: Flash.getMessage(req)
     })
 }
+
 
 exports.loginPostController = async (req, res, next) => {
     let {
@@ -163,4 +166,14 @@ exports.changePasswordPostController = async (req, res, next) => {
     } catch (e) {
         next(e)
     }
+}
+
+exports.forgetPasswordGetController = (req, res, next) => {
+    res.render('pages/auth/forgetPassword', {
+        title: 'Retrieve Your Password',
+        error: {},
+        flashMessage: Flash.getMessage(req)
+    })
+}
+exports.forgetPasswordPostController = (req, res, next) => {
 }
