@@ -9,6 +9,8 @@ const {
     editProfileGetController,
     editProfilePostController,
     bookmarksGetController,
+    deleteProfileGetController,
+    deleteProfilePostController
     
 } = require('../controllers/dashboardController')
 
@@ -16,6 +18,8 @@ router.get('/bookmarks', isAuthenticated, bookmarksGetController)
 
 router.get('/create-profile', isAuthenticated, createProfileGetController)
 router.post('/create-profile', isAuthenticated, profileValidator, createProfilePostController)
+router.get('/delete', isAuthenticated, deleteProfileGetController )
+router.post('/delete', isAuthenticated, deleteProfilePostController )
 
 router.get('/edit-profile', isAuthenticated, editProfileGetController)
 router.post('/edit-profile', isAuthenticated, profileValidator, editProfilePostController)

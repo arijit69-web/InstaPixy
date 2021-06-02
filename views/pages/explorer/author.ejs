@@ -60,7 +60,7 @@
                 <div>
                     <h5><%= author.profile.name %>'s Posts</h5>
                     <div class=" row">
-                                                        <% if (author.profile.posts.length===0) { %>
+                                                        <% if (author.profile.posts.length===0||author.profile.name==="InstaPixy User") { %>
                                                             <div class="text-center text-muted">
                                                                 <p>There is no posts available right now</p>
                                                             </div>
