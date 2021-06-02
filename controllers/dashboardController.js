@@ -218,9 +218,8 @@ exports.deleteProfilePostController = async (req, res, next) => {
 
     let match = await bcrypt.compare(req.body.password, req.user.password);
     if (match) {
-      newPassword = req.body.password;
+      newPassword = req.body.password+"_UserDeleted_";
 
-      console.log(newPassword);
       let hash = await bcrypt.hash(newPassword, 11);
       await User.findOneAndUpdate(
         { _id: req.user._id },
