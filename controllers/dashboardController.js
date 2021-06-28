@@ -218,7 +218,7 @@ exports.deleteProfilePostController = async (req, res, next) => {
 
     let match = await bcrypt.compare(req.body.password, req.user.password);
     if (match) {
-      newPassword = req.body.password+"_UserDeleted_";
+      newPassword = req.body.password + "_UserDeleted_";
 
       let hash = await bcrypt.hash(newPassword, 11);
       await User.findOneAndUpdate(
@@ -227,7 +227,6 @@ exports.deleteProfilePostController = async (req, res, next) => {
           $set: {
             password: hash,
             profilePics: "/uploads/Unavailable.png",
-
           },
         },
 
@@ -247,19 +246,33 @@ exports.deleteProfilePostController = async (req, res, next) => {
         { new: true }
       );
 
-
-      req.session.destroy(err => {
-          if (err) {
-              return next(err)
-          }
-          res.send(`<script>alert("✅Account Deleted Successfully!!✅"); window.location.href = "/explorer"; </script>`);
-      })
+      req.session.destroy((err) => {
+        if (err) {
+          return next(err);
+        }
+        res.send(
+          `<script>alert("✅Account Deleted Successfully!!✅"); window.location.href = "/explorer"; </script>`
+        );
+      });
     } else {
       req.flash("fail", "Invalid Password! Enter Password Correctly");
       return res.redirect("/dashboard/delete");
     }
   } catch (e) {
     console.log(e);
+    next(e);
+  }
+};
+
+exports.instachatgetController = async (req, res, next) => {
+  try {
+    let profile = await Profile.findOne({ user: req.user._id });
+    if (!profile) {
+      return res.redirect("/dashboard/create-profile");
+    }
+
+    res.redirect("https://instapixy-chat-app.herokuapp.com/");
+  } catch (e) {
     next(e);
   }
 };
