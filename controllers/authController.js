@@ -196,9 +196,31 @@ exports.forgetPasswordPostController = async (req, res, next) => {
     };
     const token = jwt.sign(payload, secret, { expiresIn: "15m" });
     const link = `http://localhost/auth/resetpassword/${user.id}/${token}`;
-   
-  
-  
+
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+
+      auth: {
+        user: "19bcs1705@gmail.com",
+        pass: "arijiT@1705",
+      },
+    });
+
+    var mailOptions = {
+      from: "19bcs1705@gmail.com",
+      to: email,
+      subject: "Link for Password Retrieval",
+      text: link,
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email sent: " + info.response);
+      }
+    });
+
     console.log(link);
     req.flash("success", "OTP Link Sent | Valid for 15mins");
 
