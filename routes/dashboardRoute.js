@@ -10,7 +10,7 @@ const {
     editProfilePostController,
     bookmarksGetController,
     deleteProfileGetController,
-    deleteProfilePostController
+    deleteProfilePostController,instachatgetController
     
 } = require('../controllers/dashboardController')
 
@@ -22,6 +22,8 @@ router.get('/delete', isAuthenticated, deleteProfileGetController )
 router.post('/delete', isAuthenticated, deleteProfilePostController )
 
 router.get('/edit-profile', isAuthenticated, editProfileGetController)
+router.get('/insta-chat', isAuthenticated, instachatgetController)
+
 router.post('/edit-profile', isAuthenticated, profileValidator, editProfilePostController)
 router.get('/', isAuthenticated, dashboardGetController)
 
